@@ -2,8 +2,8 @@
 
 A responsive, animated **Login & Registration** gateway page that matches the dark-teal design of Vijay Kiran's developer portfolio. On successful login it automatically redirects to the live portfolio — works both locally in VS Code and on GitHub Pages without any manual URL switching.
 
-🔗 **Login Page (Live):** `https://vijaykiran-beginner.github.io/Responsive_Login_Form/`
-🔗 **Portfolio (Live):** `https://vijaykiran-beginner.github.io/Personal-Portfolio-Website/`
+🔗 **Login Page (Live):** `https://Vijaykiran-Beginner.github.io/Responsive_Login_Form/`
+🔗 **Portfolio (Live):** `https://Vijaykiran-Beginner.github.io/Personal-Portfolio-Website/`
 
 ---
 
