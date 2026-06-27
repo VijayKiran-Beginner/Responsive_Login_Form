@@ -2,8 +2,8 @@
 
 A responsive, animated **Login & Registration** gateway page that matches the dark-teal design of Vijay Kiran's developer portfolio. On successful login it automatically redirects to the live portfolio — works both locally in VS Code and on GitHub Pages without any manual URL switching.
 
-🔗 **Login Page (Live):** https://vijaykiran-beginner.github.io/Responsive_Login_Form/
-🔗 **Portfolio (Live):** https://vijaykiran-beginner.github.io/Personal-Portfolio-Website/
+🔗 **Login Page (Live):** [vijaykiran-beginner.github.io/Responsive_Login_Form](https://vijaykiran-beginner.github.io/Responsive_Login_Form/)
+🔗 **Portfolio (Live):** [vijaykiran-beginner.github.io/Personal-Portfolio-Website](https://vijaykiran-beginner.github.io/Personal-Portfolio-Website/)
 
 ---
 
@@ -13,7 +13,7 @@ A responsive, animated **Login & Registration** gateway page that matches the da
 Desktop/
   ApexPlanet/                          ← parent folder (NOT a Git repo)
     │
-    ├── responsive_login/              ← THIS repo
+    ├── responsive_login/              ← THIS repo (Responsive_Login_Form on GitHub)
     │     index.html                   ← Login + Register UI
     │     script.js                    ← Auth logic, validation, redirect
     │     styles.css                   ← All styling & animations
@@ -53,13 +53,13 @@ if (isLocal) {
 |---|---|
 | VS Code Live Server | `../portfolio/index.html` |
 | File opened directly in browser | `../portfolio/index.html` |
-| GitHub Pages | `https://vijaykiran-beginner.github.io/Personal-Portfolio-Website/` |
+| GitHub Pages | [vijaykiran-beginner.github.io/Personal-Portfolio-Website](https://vijaykiran-beginner.github.io/Personal-Portfolio-Website/) |
 
 ---
 
 ## 🚀 Git Commands
 
-### A — Push `responsive_login` to GitHub for the first time
+### A — Push `Responsive_Login_Form` to GitHub for the first time
 
 Open VS Code terminal and run these **one by one**:
 
@@ -79,10 +79,8 @@ git commit -m "Initial commit: Portfolio auth login page"
 # Step 5 — set branch name to main
 git branch -M main
 
-# Step 6 — link to your GitHub repo
-#           First create an empty repo named responsive_login on github.com
-#           then paste its URL below
-git remote add origin https://github.com/VijayKiran-Beginner/responsive_login.git
+# Step 6 — link to your GitHub repo (Responsive_Login_Form)
+git remote add origin https://github.com/VijayKiran-Beginner/Responsive_Login_Form.git
 
 # Step 7 — push
 git push -u origin main
@@ -90,20 +88,18 @@ git push -u origin main
 
 ---
 
-### B — Enable GitHub Pages for `responsive_login`
+### B — Enable GitHub Pages for `Responsive_Login_Form`
 
-1. Go to `https://github.com/VijayKiran-Beginner/responsive_login`
+1. Go to [github.com/VijayKiran-Beginner/Responsive_Login_Form](https://github.com/VijayKiran-Beginner/Responsive_Login_Form)
 2. **Settings → Pages** (left sidebar)
 3. Source → `main` branch → `/ (root)` → **Save**
 4. Wait ~60 seconds → live at:
 
-```
-https://vijaykiran-beginner.github.io/responsive_login/
-```
+[vijaykiran-beginner.github.io/Responsive_Login_Form](https://vijaykiran-beginner.github.io/Responsive_Login_Form/)
 
 ---
 
-### C — Push future changes to `responsive_login`
+### C — Push future changes to `Responsive_Login_Form`
 
 ```bash
 cd Desktop/ApexPlanet/responsive_login
@@ -131,15 +127,36 @@ git push
 
 ---
 
-### E — Full end-to-end test
+### E — Sync GitHub changes to VS Code (git pull)
+
+If you edited any file directly on the GitHub website, pull it down to VS Code:
+
+```bash
+# For login project
+cd Desktop/ApexPlanet/responsive_login
+git pull origin main
+
+# For portfolio
+cd Desktop/ApexPlanet/portfolio
+git pull origin main
+```
+
+> **Golden rule:** Always `git pull` before starting work in VS Code if you edited anything on GitHub. Always `git push` after finishing work in VS Code.
+
+---
+
+### F — Full end-to-end test
 
 ```
-1. Open https://vijaykiran-beginner.github.io/Responsive_Login_Form/
+1. Open  →  https://vijaykiran-beginner.github.io/Responsive_Login_Form/
 2. Click "Create one" → register with any email + password
 3. Switch to Sign In → enter the same credentials
 4. Redirect overlay animates
 5. Land on https://vijaykiran-beginner.github.io/Personal-Portfolio-Website/ ✅
 ```
+
+Step 1: [vijaykiran-beginner.github.io/Responsive_Login_Form](https://vijaykiran-beginner.github.io/Responsive_Login_Form/)
+Step 5: [vijaykiran-beginner.github.io/Personal-Portfolio-Website](https://vijaykiran-beginner.github.io/Personal-Portfolio-Website/)
 
 ---
 
@@ -166,6 +183,7 @@ git push
 - Pure CSS `data-level` attribute — no inline style conflicts on reset
 
 ### Authentication (in-memory for this session)
+
 | Scenario | Result |
 |---|---|
 | Email not registered | Red email field · "No account found…" |
