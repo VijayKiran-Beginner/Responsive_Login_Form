@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vijay Kiran | Access Portfolio</title>
+
+  <!-- Google Fonts — matches portfolio (Poppins) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome — same as portfolio -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR — Portfolio-branded, minimal ===== -->
+  <header class="vk-navbar sticky-top" id="navbar">
+    <nav class="container d-flex align-items-center justify-content-between" style="height:70px;">
+
+      <!-- Brand — same style as portfolio logo -->
+      <a href="#" class="vk-logo">Vijay<span>.dev</span></a>
+
+      <!-- Right side: GitHub + LinkedIn only (no product/pricing/about) -->
+      <div class="d-flex align-items-center gap-3">
+        <a href="https://github.com/VijayKiran-Beginner" target="_blank"
+           class="vk-nav-icon" aria-label="GitHub">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/vijay-kiran-kommoju/" target="_blank"
+           class="vk-nav-icon" aria-label="LinkedIn">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ===== MAIN ===== -->
+  <main class="vk-main d-flex align-items-center justify-content-center">
+
+    <!-- Animated radial glow — mirrors portfolio hero gradient -->
+    <div class="vk-glow vk-glow-1" aria-hidden="true"></div>
+    <div class="vk-glow vk-glow-2" aria-hidden="true"></div>
+
+    <!-- Floating teal particles -->
+    <div class="vk-particles" aria-hidden="true">
+      <span></span><span></span><span></span>
+      <span></span><span></span><span></span>
+    </div>
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-sm-10 col-md-7 col-lg-5 col-xl-4">
+
+          <!-- Card -->
+          <div class="vk-card" role="region" aria-live="polite">
+
+            <!-- ── BRAND INSIDE CARD ── -->
+            <div class="vk-card-brand">
+              <div class="vk-avatar">
+                <i class="fa-solid fa-code"></i>
+              </div>
+              <!-- Typed greeting cycles through roles -->
+              <p class="vk-typed-wrap">
+                <span id="cardTyped"></span><span class="vk-cursor">|</span>
+              </p>
+            </div>
+
+            <!-- ══════════ LOGIN PANEL ══════════ -->
+            <section id="loginPanel" class="vk-panel vk-panel--active" aria-label="Sign in">
+
+              <div class="vk-panel-header">
+                <p class="vk-eyebrow">Welcome back</p>
+                <h1 class="vk-panel-title">Sign In</h1>
+                <p class="vk-panel-sub">
+                  No account?
+                  <button class="vk-link-btn" id="goToRegister" type="button">
+                    Create one <i class="bi bi-arrow-right"></i>
+                  </button>
+                </p>
+              </div>
+
+              <form id="loginForm" novalidate autocomplete="off">
+
+                <!-- Email -->
+                <div class="vk-field">
+                  <label class="vk-label" for="loginEmail">Email address</label>
+                  <div class="vk-input-wrap">
+                    <i class="bi bi-envelope vk-icon-left"></i>
+                    <input type="email" id="loginEmail" name="email"
+                           class="vk-input" placeholder="you@example.com"
+                           autocomplete="email" required
+                           aria-describedby="loginEmailFb" />
+                  </div>
+                  <div class="vk-feedback" id="loginEmailFb" role="alert"></div>
+                </div>
+
+                <!-- Password -->
+                <div class="vk-field">
+                  <label class="vk-label" for="loginPassword">
+                    Password
+                    <a href="#" class="vk-forgot">Forgot?</a>
+                  </label>
+                  <div class="vk-input-wrap">
+                    <i class="bi bi-lock vk-icon-left"></i>
+                    <input type="password" id="loginPassword" name="password"
+                           class="vk-input" placeholder="••••••••"
+                           autocomplete="current-password" required minlength="8"
+                           aria-describedby="loginPasswordFb" />
+                    <button type="button" class="vk-eye" data-target="loginPassword"
+                            aria-label="Toggle password visibility">
+                      <i class="bi bi-eye"></i>
+                    </button>
+                  </div>
+                  <div class="vk-feedback" id="loginPasswordFb" role="alert"></div>
+                </div>
+
+                <!-- Remember -->
+                <div class="vk-check-row mb-3">
+                  <input type="checkbox" id="rememberMe" class="vk-checkbox">
+                  <label for="rememberMe" class="vk-check-label">Keep me signed in</label>
+                </div>
+
+                <!-- Submit -->
+                <button type="submit" class="vk-btn w-100">
+                  <span class="vk-btn-text">
+                    <i class="fa-solid fa-right-to-bracket me-2"></i>Sign In
+                  </span>
+                  <span class="vk-btn-spinner d-none">
+                    <i class="bi bi-arrow-repeat vk-spin"></i> Verifying…
+                  </span>
+                </button>
+
+              </form>
+            </section>
+            <!-- ══════════ END LOGIN PANEL ══════════ -->
+
+
+            <!-- ══════════ REGISTER PANEL ══════════ -->
+            <section id="registerPanel" class="vk-panel" aria-label="Create account" aria-hidden="true">
+
+              <div class="vk-panel-header">
+                <p class="vk-eyebrow">Get started</p>
+                <h1 class="vk-panel-title">Create Account</h1>
+                <p class="vk-panel-sub">
+                  Already registered?
+                  <button class="vk-link-btn" id="goToLogin" type="button">
+                    Sign in <i class="bi bi-arrow-right"></i>
+                  </button>
+                </p>
+              </div>
+
+              <form id="registerForm" novalidate autocomplete="off">
+
+                <!-- Full name -->
+                <div class="vk-field">
+                  <label class="vk-label" for="regName">Full name</label>
+                  <div class="vk-input-wrap">
+                    <i class="bi bi-person vk-icon-left"></i>
+                    <input type="text" id="regName" name="name"
+                           class="vk-input" placeholder="Ada Lovelace"
+                           autocomplete="name" required minlength="2"
+                           aria-describedby="regNameFb" />
+                  </div>
+                  <div class="vk-feedback" id="regNameFb" role="alert"></div>
+                </div>
+
+                <!-- Email -->
+                <div class="vk-field">
+                  <label class="vk-label" for="regEmail">Email address</label>
+                  <div class="vk-input-wrap">
+                    <i class="bi bi-envelope vk-icon-left"></i>
+                    <input type="email" id="regEmail" name="email"
+                           class="vk-input" placeholder="you@example.com"
+                           autocomplete="email" required
+                           aria-describedby="regEmailFb" />
+                  </div>
+                  <div class="vk-feedback" id="regEmailFb" role="alert"></div>
+                </div>
+
+                <!-- Password -->
+                <div class="vk-field">
+                  <label class="vk-label" for="regPassword">Password</label>
+                  <div class="vk-input-wrap">
+                    <i class="bi bi-lock vk-icon-left"></i>
+                    <input type="password" id="regPassword" name="password"
+                           class="vk-input" placeholder="Min. 8 characters"
+                           autocomplete="new-password" required minlength="8"
+                           aria-describedby="regPasswordFb" />
+                    <button type="button" class="vk-eye" data-target="regPassword"
+                            aria-label="Toggle password visibility">
+                      <i class="bi bi-eye"></i>
+                    </button>
+                  </div>
+                  <div class="vk-feedback" id="regPasswordFb" role="alert"></div>
+                  <!-- Strength bar -->
+                  <div class="vk-strength-track">
+                    <div class="vk-strength-bar" id="strengthBar"
+                         role="meter" aria-valuenow="0" aria-valuemin="0" aria-valuemax="4"></div>
+                  </div>
+                  <p class="vk-strength-label" id="strengthLabel" aria-live="polite"></p>
+                </div>
+
+                <!-- Confirm password -->
+                <div class="vk-field">
+                  <label class="vk-label" for="regConfirm">Confirm password</label>
+                  <div class="vk-input-wrap">
+                    <i class="bi bi-lock-fill vk-icon-left"></i>
+                    <input type="password" id="regConfirm" name="confirm"
+                           class="vk-input" placeholder="Repeat password"
+                           autocomplete="new-password" required
+                           aria-describedby="regConfirmFb" />
+                    <button type="button" class="vk-eye" data-target="regConfirm"
+                            aria-label="Toggle confirm password visibility">
+                      <i class="bi bi-eye"></i>
+                    </button>
+                  </div>
+                  <div class="vk-feedback" id="regConfirmFb" role="alert"></div>
+                </div>
+
+                <!-- Terms -->
+                <div class="vk-check-row">
+                  <input type="checkbox" id="agreeTerms" class="vk-checkbox" required
+                         aria-describedby="termsFb">
+                  <label for="agreeTerms" class="vk-check-label">
+                    I agree to the <a href="#" class="vk-inline-link">Terms</a> &
+                    <a href="#" class="vk-inline-link">Privacy Policy</a>
+                  </label>
+                </div>
+                <div class="vk-feedback mb-3" id="termsFb" role="alert"></div>
+
+                <!-- Submit -->
+                <button type="submit" class="vk-btn w-100">
+                  <span class="vk-btn-text">
+                    <i class="fa-solid fa-user-plus me-2"></i>Create Account
+                  </span>
+                  <span class="vk-btn-spinner d-none">
+                    <i class="bi bi-arrow-repeat vk-spin"></i> Creating…
+                  </span>
+                </button>
+
+              </form>
+            </section>
+            <!-- ══════════ END REGISTER PANEL ══════════ -->
+
+          </div>
+          <!-- end .vk-card -->
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="vk-footer">
+    <div class="container">
+      <div class="row align-items-center g-2">
+        <div class="col-12 col-md-auto text-center text-md-start">
+          <span class="vk-footer-copy">
+            &copy; <span id="footerYear"></span> Vijay Kiran. All rights reserved.
+          </span>
+        </div>
+        <div class="col-12 col-md text-center text-md-end">
+          <nav aria-label="Footer">
+            <a href="#" class="vk-footer-link">Privacy Policy</a>
+            <a href="#" class="vk-footer-link">Terms of Service</a>
+            <a href="mailto:vijaykirankommoju.cse@gmail.com" class="vk-footer-link">Contact</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
