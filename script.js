@@ -1,3 +1,17 @@
+/**
+ * VIJAY KIRAN — Portfolio Auth UI  |  script.js
+ *
+ * Flow:
+ *  1. Register → saves { name, email, password } to in-memory userStore
+ *  2. Login    → checks email exists, then checks password
+ *                correct → redirect overlay → open portfolio HTML
+ *                email not found → "No account found"
+ *                wrong password  → "Incorrect password"
+ */
+
+/* ─────────────────────────────────────────────────────────────
+   § 0. USER STORE (in-memory)
+───────────────────────────────────────────────────────────── */
 const userStore = [];
 
 function findUser(email) {
@@ -9,6 +23,9 @@ function registerUser(name, email, password) {
   return true;
 }
 
+/* ─────────────────────────────────────────────────────────────
+   § 1. DOM REFS
+───────────────────────────────────────────────────────────── */
 const loginPanel    = document.getElementById('loginPanel');
 const registerPanel = document.getElementById('registerPanel');
 const loginForm     = document.getElementById('loginForm');
@@ -62,29 +79,47 @@ document.addEventListener('DOMContentLoaded', typeCard);
    § 3. PANEL TOGGLE (slide-and-fade)
 ───────────────────────────────────────────────────────────── */
 function switchPanel(from, to) {
+  // 1. Slide the current panel out to the left
   from.classList.remove('vk-panel--active');
   from.classList.add('vk-panel--exit-left');
   from.setAttribute('aria-hidden', 'true');
 
+  // 2. Reset the incoming panel to its off-screen-right starting position
+  //    without any transition so it jumps there instantly
   to.style.transition = 'none';
   to.classList.remove('vk-panel--active', 'vk-panel--exit-left');
+  // Position it absolute so it doesn't push card height yet
+  to.style.position  = 'absolute';
   to.style.opacity   = '0';
   to.style.transform = 'translateX(36px)';
-  to.style.position  = 'absolute';
-  void to.offsetWidth;                   // force reflow
 
+  // 3. Force the browser to register that starting state
+  void to.offsetWidth;
+
+  // 4. Re-enable transitions and animate to the visible state
   to.style.transition = '';
   to.style.opacity    = '';
   to.style.transform  = '';
 
+  // 5. After animation completes (320 ms matches CSS):
+  //    - active panel becomes in-flow (position:relative → sets card height)
+  //    - exiting panel is tucked back to absolute so it takes no space
+  const DURATION = 340; // slight buffer over the 0.32s CSS transition
   setTimeout(() => {
+    // Clean up exiting panel
     from.classList.remove('vk-panel--exit-left');
-    from.style.position = 'absolute';
-    to.style.position   = '';
+    from.style.position  = '';  // back to CSS default (absolute)
+    from.style.opacity   = '';
+    from.style.transform = '';
+
+    // Promote incoming panel to in-flow active
+    to.style.position  = '';
+    to.style.opacity   = '';
+    to.style.transform = '';
     to.classList.add('vk-panel--active');
     to.setAttribute('aria-hidden', 'false');
     to.scrollTop = 0;
-  }, 350);
+  }, DURATION);
 }
 
 goToRegister.addEventListener('click', () => switchPanel(loginPanel, registerPanel));
@@ -273,8 +308,28 @@ function redirectToPortfolio(userName) {
 
   // After the loading bar finishes (1.8 s) → navigate
   setTimeout(() => {
-    // ── CHANGE THIS PATH if your portfolio file has a different name/location ──
-    window.location.href = '../portfolio/index.html';
+    // ── Smart redirect: local VS Code  vs  GitHub Pages ──────────
+    //
+    //  Local structure (Desktop/ApexPlanet/):
+    //    responsive_login/index.html   ← this file
+    //    portfolio/index.html          ← sibling folder (one level up)
+    //
+    //  GitHub repos are separate:
+    //    responsive_login  → github.com/VijayKiran-Beginner/responsive_login
+    //    portfolio         → github.com/VijayKiran-Beginner/Personal-Portfolio-Website
+    //                        live at: vijaykiran-beginner.github.io/Personal-Portfolio-Website/
+    // ────────────────────────────────────────────────────────────────
+    const isLocal = window.location.hostname === 'localhost'
+                 || window.location.hostname === '127.0.0.1'
+                 || window.location.protocol === 'file:';
+
+    if (isLocal) {
+      // VS Code Live Server or file:// — go up one level into sibling portfolio folder
+      window.location.href = '../portfolio/index.html';
+    } else {
+      // GitHub Pages — exact live URL of your already-deployed portfolio
+      window.location.href = 'https://vijaykiran-beginner.github.io/Personal-Portfolio-Website/';
+    }
   }, 2000);
 }
 
